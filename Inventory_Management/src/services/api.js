@@ -4,6 +4,9 @@ const API = axios.create({
     baseURL: "http://localhost:8080/api",
 })
 
+
+const PublicAPI = axios.create({ baseURL: "http://localhost:8080/api" });
+
 API.interceptors.request.use((config) => {
     const token = localStorage.getItem("token");
     if(token) config.headers.Authorization = `Bearer ${token}`;
@@ -11,5 +14,7 @@ API.interceptors.request.use((config) => {
 });
 
 export default API;
+export { PublicAPI };
+
 
 
