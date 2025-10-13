@@ -12,10 +12,10 @@ function Login(){
     const handleLogin = async (e) =>{
         e.preventDefault();
         try {
-            const res = await API.post("/auth/login",{email,password});
+            const res = await API.post("auth/login",{email,password});
             localStorage.setItem("token",res.data.accessToken);
             navigate("/dashboard");
-            console.log(res.data)
+            console.log(res)
         } catch (error){
             alert("Login Failed" + error);
         }
@@ -24,24 +24,24 @@ function Login(){
     return (
         <>
         <div className="flex items-center justify-center h-screen">
-       <div class=" w-96 p-8  rounded-lg shadow-lg">
-       <h2 class="font-bold text-3xl">Welcome Back</h2>
-       <p class="mt-2">Sign in to continue</p>
+       <div className=" w-96 p-8  rounded-lg shadow-lg">
+       <h2 className="font-bold text-3xl">Welcome Back</h2>
+       <p className="mt-2">Sign in to continue</p>
        <form 
        onSubmit={handleLogin}>
         <div>
-            <label class="mt-2 block font-medium">Email</label>
+            <label className="mt-2 block font-medium">Email</label>
             <input 
-            class="w-full mt-1 p-2 border rounded-md text-gray-900" 
+            className="w-full mt-1 p-2 border rounded-md text-gray-900" 
             type="email"
             value={email}
             onChange={(e)=> setEmail(e.target.value)}
             />
         </div>
-          <div class="mt-4">
-            <label class="mt-2 block font-medium">Password</label>
+          <div className="mt-4">
+            <label className="mt-2 block font-medium">Password</label>
             <input 
-            class="w-full mt-1 p-2 border rounded-md text-gray-900"
+            className="w-full mt-1 p-2 border rounded-md text-gray-900"
              type="password"
              value={password}
              onChange={(e)=> setPassword(e.target.value)}
@@ -49,13 +49,13 @@ function Login(){
         </div>
 
         <div>
-            <a class="text-right block mt-2 text-sm hover:underline">Forgot password</a>
+            <a className="text-right block mt-2 text-sm hover:underline">Forgot password</a>
             <button 
-            class="w-full bg-slate-800 py-2 text-white rounded-md font-bold mt-6 hover:opacity-80"
+            className="w-full bg-slate-800 py-2 text-white rounded-md font-bold mt-6 hover:opacity-80"
             >Sign In</button>
         </div>
        </form>
-       <p class="text-center mt-6 text-sm">Don't have an account?
+       <p className="text-center mt-6 text-sm">Don't have an account?
          <Link to={"/register"} class="text-center hover:underline">Sign up</Link>
        </p>
     </div>

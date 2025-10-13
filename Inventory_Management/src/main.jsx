@@ -6,6 +6,8 @@ import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import Layout from './Layout.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import ProtectedRoute from './ProtectedRoute.jsx'
+import Navbar from './components/Navbar.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -13,11 +15,15 @@ const router = createBrowserRouter(
     <Route path='/' element={<Layout/>}>
     <Route path='/login' element={<Login />}/>
     <Route path='/register' element={<Register />}/>
+    <Route path='/navbar' element={<Navbar />}/>
+
+    <Route element={<ProtectedRoute />}>
     <Route path='/dashboard' element={<Dashboard />}/>
 
     </Route>
+    </Route>
 
-  )
+  ) 
 )
 
 createRoot(document.getElementById('root')).render(
